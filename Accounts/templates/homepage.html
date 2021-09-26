@@ -1,0 +1,564 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}<div class="content-page">
+        <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div class="page-title-box">
+                  <div class="page-title-right"></div>
+                  <h4 class="page-title">Dashboard</h4>
+                  {% if alert %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{alert}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              <div class="col-md-6 col-xl-3">
+                <div class="widget-rounded-circle card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-pink border-pink border d-flex justify-content-center align-items-center">
+                          <span class="iconify " data-icon="fa-solid:male" style="font-size:2.5em"></span>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <h3 class="text-dark mt-1"><span data-plugin="counterup">{{male__sum}}</span></h3>
+                          <p class="text-muted mb-1 text-truncate">Male Athletes</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end row-->
+                  </div>
+                </div>
+                <!-- end widget-rounded-circle-->
+              </div>
+              <!-- end col-->
+
+              <div class="col-md-6 col-xl-3">
+                <div class="widget-rounded-circle card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-blue border-blue border d-flex justify-content-center align-items-center">
+                          <span class="iconify" data-icon="fa-solid:female" style="font-size:2.5em; color:blue;"></span>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <h3 class="text-dark mt-1"><span data-plugin="counterup">{{female__sum}}</span></h3>
+                          <p class="text-muted mb-1 text-truncate">Female Athletes</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end row-->
+                  </div>
+                </div>
+                <!-- end widget-rounded-circle-->
+              </div>
+              <!-- end col-->
+
+              <div class="col-md-6 col-xl-3">
+                <div class="widget-rounded-circle card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-success border-success border d-flex justify-content-center align-items-center">
+                          <span class="iconify" data-icon="gis:search-country" style="font-size:2.5em; color:green;"></span>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <h3 class="text-dark mt-1"><span data-plugin="counterup">{{countries}}</span></h3>
+                          <p class="text-muted mb-1 text-truncate">Countries</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end row-->
+                  </div>
+                </div>
+                <!-- end widget-rounded-circle-->
+              </div>
+              <!-- end col-->
+
+              <div class="col-md-6 col-xl-3">
+                <div class="widget-rounded-circle card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-warning border-warning border d-flex justify-content-center align-items-center">
+                          <span class="iconify" data-icon="entypo:medal" style="font-size:2.5em; color:#fcc644;"></span>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <h3 class="text-dark mt-1"><span data-plugin="counterup">{{medalholder}}</span></h3>
+                          <p class="text-muted mb-1 text-truncate">Medal Holder Countries</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end row-->
+                  </div>
+                </div>
+                <!-- end widget-rounded-circle-->
+              </div>
+              <!-- end col-->
+            </div>
+            <!-- end row-->
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="header-title mb-3">Gender Ratio</h4>
+
+                    <div class="widget-chart text-center" dir="ltr">
+                      <div id="genderratio" class="mt-0 d-flex justify-content-center align-items-center" ></div>
+
+                      <h5 class="text-muted mt-0">Total Participant</h5>
+                      <h2>{{total}}</h2>
+
+                      <div class="row mt-3">
+                        <div class="col-6">
+                          <p class="text-muted font-15 mb-1 text-truncate">Male</p>
+                          <h4>{{male__sum}}</h4>
+                        </div>
+                        <div class="col-6">
+                          <p class="text-muted font-15 mb-1 text-truncate">Female</p>
+                          <h4>{{female__sum}}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card -->
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="header-title mb-3">Country Win Ratio</h4>
+
+                    <div class="widget-chart text-center" dir="ltr">
+                      <div id="winratio" class="mt-0 d-flex justify-content-center align-items-center" ></div>
+
+                      <h5 class="text-muted mt-0">Total Participant</h5>
+                      <h2>{{countries}}</h2>
+
+                      <div class="row mt-2">
+                        <div class="col-6">
+                          <p class="text-muted font-15 mb-1 text-truncate">Medal Owning Countries</p>
+                          <h4>{{medalholder}}</h4>
+                        </div>
+                        <div class="col-6">
+                          <p class="text-muted font-15 mb-1 text-truncate">Non-Medal Owning Countries</p>
+                          <h4 id="lostcountry"></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card -->
+              </div>
+            </div>
+            <!-- end row -->
+            
+
+            
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body pb-2">
+                  <h4 class="header-title mb-3">Top 20 Country Medal Count</h4>
+                  <div dir="ltr">
+                    <div id="medals" class="mt-2" ></div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body pb-2">
+                  <h4 class="header-title mb-3">Team Types</h4>
+                  <div dir="ltr">
+                    <div id="events" class="mt-4"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body pb-2">
+                  <h4 class="header-title mb-3">Gender Participation in Events</h4>
+                  <div dir="ltr">
+                    <div id="events_genders" class="mt-4" ></div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <div class="row">
+              <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="dropdown float-end">
+                      <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                      </div>
+                    </div>
+
+                    <h4 class="header-title mb-3">Top 10 Ranking Countries</h4>
+
+                    <div class="table-responsive">
+                      <table class="table table-borderless table-hover table-nowrap table-centered m-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Gold Medal</th>
+                            <th>Silver Medal</th>
+                            <th>Bronze Medal</th>
+                            <th>Total Medal</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in medals %}
+                          <tr>
+                            <td>{{item.rank}}</td>
+                            <td>{{item.country.country}}</td>
+                            <td>{{item.gold}}</td>
+                            <td>{{item.silver}}</td>
+                            <td>{{item.bronze}}</td>
+                            <td>{{item.total_medal}}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end col -->
+
+              <div class="col-xl-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="dropdown float-end">
+                      <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                      </div>
+                    </div>
+
+                    <h4 class="header-title mb-3">Top 10 Ranking Countries for Medals</h4>
+
+                    <div class="table-responsive">
+                      <table class="table table-borderless table-nowrap table-hover table-centered m-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Rank</th>
+                            <th>Country</th>
+                            <th>Gold Medal</th>
+                            <th>Silver Medal</th>
+                            <th>Bronze Medal</th>
+                            <th>Total Medal</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in medalsrank %}
+                          <tr>
+                            <td>{{item.total_medal_rank}}</td>
+                            <td>{{item.country.country}}</td>
+                            <td>{{item.gold}}</td>
+                            <td>{{item.silver}}</td>
+                            <td>{{item.bronze}}</td>
+                            <td>{{item.total_medal}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- end .table-responsive-->
+                  </div>
+                </div>
+                <!-- end card-->
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- container -->
+        </div>
+        <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                &copy; UBold theme by <a href="#">Coderthemes</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- end Footer -->
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- End Page content -->
+      <!-- ============================================================== -->
+    </div>
+
+    <!-- Vendor js -->
+    <script src="{% static 'js/vendor.min.js' %}"></script>
+
+    <!-- Plugins js-->
+    <script src="{% static 'js/flatpickr.min.js' %}"></script>
+    <script src="{% static 'js/apexcharts.min.js' %}"></script>
+
+    <script src="{% static 'js/selectize.min.js' %}"></script>
+
+    <!-- Dashboar 1 init js-->
+    <script src="{% static 'js/dashboard-1.init.js' %}"></script>
+
+    <!-- App js-->
+    <script src="{% static 'js/app.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <div class="modal fade" id="login" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Id" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit" value="login">Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            {% comment %} <a href="{% url 'forgetpass' %}" class="text-grey">Forgot Password?</a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="reset" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Reset Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="old_password" class="form-label">Old Password</label>
+                <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Old Password" />
+              </div>
+              <div class="mb-3">
+                <label for="new_password" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="new_password" name="new_password" placeholder="New Password" />
+              </div>
+              <button type="submit" class="btn btn-primary" name="submit" value="reset">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    function sidebarchart(data,q,name){
+      const datas = data['data'].map((item,index)=>(
+        {
+          name: name[index],
+          data: item,
+        }
+      ))
+      var sidebar = {
+                    series: datas,
+                    chart: {
+                    type: 'bar',
+                    },
+                    plotOptions: {
+                      bar: {
+                        horizontal: true,
+                        columnWidth: "30%",
+                        dataLabels: {
+                          position: 'top',
+                        },
+                      }
+                    },
+                    colors: ['#d4af37', '#C0C0C0','#b08d57'],
+                    dataLabels: {
+                      enabled: true,
+                      offsetX: -6,
+                      style: {
+                        fontSize: '12px',
+                        colors: ['#fff']
+                      }
+                    },
+                    stroke: {
+                      show: true,
+                      width: 1,
+                      colors: ['#fff']
+                    },
+                    tooltip: {
+                      shared: true,
+                      intersect: false
+                    },
+                    xaxis: {
+                      categories: data['label'],
+                    },
+            };
+        var chart1 = new ApexCharts(document.querySelector(q), sidebar);
+        chart1.render();
+    }
+    function donut(data, q,label){
+      var donut = {
+          series: data,
+          chart: {
+          width: 380,
+          type: 'donut',
+        },
+        labels:label,
+        dataLabels: {
+          enabled: false
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              show: false
+            }
+          }
+        }],
+        legend: {
+          position: 'right',
+          offsetY: 0,
+          height: 230,
+        }
+        };
+
+        var chart2 = new ApexCharts(document.querySelector(q), donut);
+        chart2.render();
+    }
+    function bargraph(data,q,name){
+      options = {
+                series: [
+                  { name: name, type: "column", data:data['data'] },
+                ],
+                chart: { height: 378, type: "bar", offsetY: 10 },
+                stroke: { width: [2, 3] },
+                plotOptions: { bar: { columnWidth: "50%" } },
+                colors: colors,
+                dataLabels: { enabled: !0, enabledOnSeries: [1] },
+                labels: data['label'],
+                legend: { offsetY: 7 },
+                grid: { padding: { bottom: 20 } },
+                fill: { type: "gradient", gradient: { shade: "light", type: "horizontal", shadeIntensity: 0.25, gradientToColors: void 0, inverseColors: !0, opacityFrom: 0.75, opacityTo: 0.75, stops: [0, 0, 0] } },
+              };
+      var chart3 = new ApexCharts(document.querySelector(q), options);
+      chart3.render();
+    }
+    function stackedbargraph(data,q,name){
+      const datas = data['data'].map((item,index)=>(
+        {
+          name: name[index],
+          data: item,
+        }
+      ))
+      console.log(datas)
+      var stackedbar = {
+          series: datas,
+          chart: {
+          type: 'bar',
+          height: 1000,
+          stacked: true,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        xaxis: {
+          categories: data['label'],
+        },
+        yaxis: {
+          title: {
+            text: undefined
+          },
+        },
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
+        };
+
+        var chart4 = new ApexCharts(document.querySelector(q), stackedbar);
+        chart4.render();
+    }
+
+    sidebarchart({{rank|safe}},"#medals",["Gold","Silver","Bronze"]);
+    donut([{{male__sum}}, {{female__sum}}], "#genderratio",["Male","Female"]);
+    donut([{{medalholder}},{{countries}}-{{medalholder}}], "#winratio",["Win","Lost"]);
+    bargraph({{team_types|safe}},"#events","Event Count");
+    stackedbargraph({{gender_participation|safe}},"#events_genders",["Male","Female"]);
+    
+    var tem = document.querySelector('#lostcountry')
+    document.getElementById("lostcountry").innerHTML = {{countries}}-{{medalholder}};
+
+    </script>
+    
+    {% endblock content %}

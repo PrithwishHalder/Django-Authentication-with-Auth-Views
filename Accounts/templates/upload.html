@@ -1,0 +1,30 @@
+{% extends 'index.html' %} {% block content %}
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid h-100 d-flex justify-content-center">
+      <div class="card mt-5" style="width: 18rem; height: fit-content">
+        <div class="card-body">
+          <h5 class="card-title">Bulk Upload Data</h5>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <select class="form-select bg-white" aria-label="Default select example" name="type">
+              <option selected hidden>Select Upload Category type</option>
+              <option value="Country">Country</option>
+              <option value="Athletes">Athletes</option>
+              <option value="Teams">Teams</option>
+              <option value="Medals">Medals</option>
+              <option value="Gender">Gender in Sports</option>
+            </select>
+            <option value=""></option>
+            <div class="mb-3">
+              <label for="file" class="form-label">Upload File</label>
+              <input type="file" class="form-control bg-white" id="file" name="file" placeholder="File" />
+            </div>
+            <button type="submit" class="btn btn-secondary">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
