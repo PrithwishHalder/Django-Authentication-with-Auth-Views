@@ -134,8 +134,8 @@ def signup(request):
       print(user)
       template = render_to_string(
           'token.html', {'user': user, 'token': auth_token})
-      send_mail("Account Verification!", template, EMAIL_HOST_USER,
-                [email], html_message=template)
+      # send_mail("Account Verification!", template, EMAIL_HOST_USER,
+      #           [email], html_message=template)
       return redirect('Homepage')
   else:
     form = SignUpForm()
