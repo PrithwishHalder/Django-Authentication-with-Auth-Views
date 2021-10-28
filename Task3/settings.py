@@ -25,7 +25,7 @@ SECRET_KEY = '!0z4k!-@z1-&#m$1^6&d98(ub-50xj3g)#9oi0#6-7h6__jgex'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,12 +81,8 @@ WSGI_APPLICATION = 'Task3.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'task3',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'POST': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
