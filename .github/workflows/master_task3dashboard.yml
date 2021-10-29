@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'task3dashboard'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_73148E3519464AF7AC09B43D9B07B8FB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AA48F5C7698A477FBCDAA6E8AE5E1AE0 }}
