@@ -7,7 +7,7 @@ class User(AbstractUser):
   username = None
   email = models.EmailField(help_text="E-mail", unique=True)
   is_active = models.BooleanField(
-      default=False, help_text="Is Account Verified")
+      default=True, help_text="Is Account Verified")
   token = models.CharField(
       help_text="Valid User Token for Verification", max_length=100, null=True, blank=True)
 
@@ -68,20 +68,6 @@ class Teams(models.Model):
 
   class Meta:
     db_table = "teams"
-
-
-class Teams(models.Model):
-  team_name = models.CharField(help_text="Team Name", max_length=255)
-  country = models.ForeignKey(Country, on_delete=models.CASCADE)
-  sports_type = models.CharField(help_text="Sport Type", max_length=255)
-  event = models.CharField(help_text="Event type", max_length=255)
-
-  def __str__(self):
-    return self.team_name
-
-  class Meta:
-    db_table = "teams"
-
 
 class SportsGender(models.Model):
   sports_type = models.CharField(help_text="Sport Type", max_length=255)

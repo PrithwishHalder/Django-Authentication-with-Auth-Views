@@ -114,7 +114,7 @@ def upload(request):
         context['alert'] = request.POST['type'] + " created in bulk!"
 
     except Exception as e:
-      print(e)
+      print("Error"+e)
       context['alert'] = "File Error!"
 
   return render(request, "upload.html")
